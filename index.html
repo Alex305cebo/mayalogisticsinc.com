@@ -198,6 +198,15 @@ footer ul a:hover{color:var(--txt)}
   .g4,.g3,.g2,.feat{grid-template-columns:1fr}
   .hero-cta .btn{flex:1}
 }
+/* Below ~420px the wordmark plus the CTA no longer fit on one line and push the
+   header past the viewport. Shrink both instead of wrapping or hiding the CTA. */
+@media(max-width:420px){
+  .wrap{padding:0 16px}
+  .brand{font-size:13px;gap:8px}
+  .brand svg{width:26px;height:26px}
+  .nav{gap:12px}
+  .nav .btn{padding:9px 14px;font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -247,7 +256,10 @@ footer ul a:hover{color:var(--txt)}
         </div>
       </div>
       <div class="hero-img">
-        <img src="truck.png" width="1400" height="695" alt="Freightliner Cascadia tractor with a 53-foot dry van trailer" fetchpriority="high">
+        <picture>
+          <source srcset="truck.webp" type="image/webp">
+          <img src="truck.png" width="1400" height="695" alt="Freightliner Cascadia tractor with a 53-foot dry van trailer" fetchpriority="high">
+        </picture>
       </div>
     </div>
   </section>
@@ -328,7 +340,10 @@ footer ul a:hover{color:var(--txt)}
         </ul>
       </div>
       <div class="shot">
-        <img src="truck.png" width="1400" height="695" alt="Freightliner Cascadia tractor of the Maya Logistics fleet" loading="lazy">
+        <picture>
+          <source srcset="truck.webp" type="image/webp">
+          <img src="truck.png" width="1400" height="695" alt="Freightliner Cascadia tractor of the Maya Logistics fleet" loading="lazy">
+        </picture>
       </div>
     </div>
   </section>
