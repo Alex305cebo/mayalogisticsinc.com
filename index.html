@@ -26,7 +26,9 @@ body{
   -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
+/* height:auto is required, not optional: the <img> carries width/height attributes,
+   so max-width alone shrinks the width and leaves the height at 695px. */
+img{max-width:100%;height:auto;display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 .eyebrow{
   font-size:12px;letter-spacing:.18em;text-transform:uppercase;
@@ -112,6 +114,17 @@ header{
 
 /* ---------- fleet ---------- */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+/* grid items default to min-width:auto, so a 1400px-wide image forces the column
+   wider than its track and blows the page out sideways. Pin them to 0. */
+.hero-grid>*,.split>*,.contact-grid>*{min-width:0}
+/* Second look at the same photo: framed and cropped to the tractor, so the fleet
+   section doesn't read as the hero image pasted twice. */
+.shot{
+  position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(120% 100% at 32% 18%,#16202f,#080d15)
+}
+.shot img{position:absolute;left:-18%;top:50%;width:170%;max-width:none;transform:translateY(-50%)}
 .speclist{list-style:none;margin-top:30px;display:grid;gap:2px}
 .speclist li{
   display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line)
@@ -314,8 +327,8 @@ footer ul a:hover{color:var(--txt)}
           </li>
         </ul>
       </div>
-      <div class="hero-img">
-        <img src="truck.png" width="1400" height="695" alt="Maya Logistics dry van tractor-trailer" loading="lazy">
+      <div class="shot">
+        <img src="truck.png" width="1400" height="695" alt="Freightliner Cascadia tractor of the Maya Logistics fleet" loading="lazy">
       </div>
     </div>
   </section>
