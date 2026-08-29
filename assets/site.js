@@ -109,7 +109,7 @@
     elBody.hidden = !opts.body;
     if (copyBody) copyBody.hidden = !opts.body;
 
-    elGmail.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' +
+    elGmail.href = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=' +
       encodeURIComponent(opts.to) +
       '&su=' + encodeURIComponent(opts.subject || '') +
       '&body=' + encodeURIComponent(opts.body || '');

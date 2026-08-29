@@ -83,6 +83,7 @@ def main():
         t['hreflangs'] = hreflangs(langs)
         t['langswitch'] = switcher(langs, code, t['lang_label'])
         t['phoneblock'] = phoneblock(code)
+        t['email'] = i18n.EMAIL
 
         page = tpl
         for key, val in t.items():

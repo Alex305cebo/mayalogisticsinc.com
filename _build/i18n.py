@@ -18,6 +18,11 @@ LANGS = [
 
 T = {}
 
+# The mailbox the site actually points at. info@mayalogisticsinc.com does NOT
+# exist — Hostinger's MX answers 550 "undeliverable address" — so everything
+# sent there bounced. Change this line back the moment that mailbox is created.
+EMAIL = 'mayalogisticscorp@gmail.com'
+
 # --- direct line, shown only after the application is filled in -------------
 # The number is a personal one, so it is never written out in plain text: not in
 # the HTML, not here in the repository (this repo is public). What is stored is
@@ -25,7 +30,7 @@ T = {}
 # in JavaScript at the moment the driver submits the form. Harvester bots read
 # HTML with a regexp and do not run scripts or submit forms, so there is nothing
 # for them to pick up. Empty CONTACT_ENC = no block at all.
-CONTACT_ENC = 'ZENJQQpuBAYKZV1ET1hWExsdHR4TGx8SEg=='
+CONTACT_ENC = ''
 
 PHONE_TEXT = {
     'en': ('Prefer to call?', 'Call about your application any time.'),

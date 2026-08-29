@@ -190,10 +190,10 @@
       <p class="eyebrow">{{apply_eyebrow}}</p>
       <h2 class="h2">{{apply_h2}}</h2>
       <p class="lead">{{apply_lead}}</p>
-      <p class="lead">{{apply_direct}} <a data-mail href="mailto:info@mayalogisticsinc.com">info@mayalogisticsinc.com</a></p>
+      <p class="lead">{{apply_direct}} <a data-mail href="mailto:{{email}}">{{email}}</a></p>
     </div>
 
-    <form class="form-wrap" data-mail-form="info@mayalogisticsinc.com"
+    <form class="form-wrap" data-mail-form="{{email}}"
           data-subject="{{apply_subject}}" data-sent-title="{{apply_ready}}">
       <div class="fields">
         <div class="field">
@@ -277,7 +277,7 @@
     </div>
 
     <div class="btns">
-      <a class="btn btn-o" data-mail data-mail-title="{{ship_btn}}" href="mailto:info@mayalogisticsinc.com?subject=Freight%20quote%20request&amp;body=Company%3A%0AContact%20name%3A%0ALane%20(pickup%20city%2Fstate%20-%20delivery%20city%2Fstate)%3A%0APickup%20date%20and%20window%3A%0ACommodity%20and%20weight%3A%0AEquipment%20(dry%20van%20or%20power%20only)%3A%0A">{{ship_btn}}</a>
+      <a class="btn btn-o" data-mail data-mail-title="{{ship_btn}}" href="mailto:{{email}}?subject=Freight%20quote%20request&amp;body=Company%3A%0AContact%20name%3A%0ALane%20(pickup%20city%2Fstate%20-%20delivery%20city%2Fstate)%3A%0APickup%20date%20and%20window%3A%0ACommodity%20and%20weight%3A%0AEquipment%20(dry%20van%20or%20power%20only)%3A%0A">{{ship_btn}}</a>
     </div>
     <p class="lead" style="font-size:15px">{{ship_packet}}</p>
   </div>
@@ -413,7 +413,7 @@
     <p class="lead">{{cta_lead}}</p>
     <div class="btns" style="justify-content:center">
       <a class="btn btn-o" href="#apply">{{cta_apply}}</a>
-      <a class="btn btn-ghost" data-mail data-mail-title="{{mbox_title}}" href="mailto:info@mayalogisticsinc.com">{{cta_write}}</a>
+      <a class="btn btn-ghost" data-mail data-mail-title="{{mbox_title}}" href="mailto:{{email}}">{{cta_write}}</a>
     </div>
   </div>
 </section>
@@ -442,7 +442,7 @@
           <li><a href="#company">{{nav_company}}</a></li>
           <li><a href="#platform">{{nav_platform}}</a></li>
           <li><a href="#shippers">{{ship_eyebrow}}</a></li>
-          <li><a data-mail href="mailto:info@mayalogisticsinc.com">info@mayalogisticsinc.com</a></li>
+          <li><a data-mail href="mailto:{{email}}">{{email}}</a></li>
         </ul>
       </div>
     </div>
@@ -457,7 +457,7 @@
   <a class="fab-o" href="#apply" title="{{cta_apply}}" aria-label="{{cta_apply}}">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
   </a>
-  <a class="fab-w" href="mailto:info@mayalogisticsinc.com" data-mail data-mail-title="{{mbox_title}}" title="{{cta_write}}" aria-label="{{cta_write}}">
+  <a class="fab-w" href="mailto:{{email}}" data-mail data-mail-title="{{mbox_title}}" title="{{cta_write}}" aria-label="{{cta_write}}">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
   </a>
 </div>
@@ -469,7 +469,7 @@
     <p class="mbox-sub" data-mbox-sub hidden></p>
 
     <div class="mbox-addr">
-      <span data-mbox-addr>info@mayalogisticsinc.com</span>
+      <span data-mbox-addr>{{email}}</span>
       <button class="mbox-copy" type="button" data-mbox-copy-addr data-done="{{mbox_done}}">{{mbox_copy}}</button>
     </div>
 
@@ -477,7 +477,7 @@
 
     <div class="mbox-btns">
       <a class="btn btn-o" data-mbox-gmail href="https://mail.google.com/" target="_blank" rel="noopener">{{mbox_gmail}}</a>
-      <a class="btn btn-line" data-mbox-mailto href="mailto:info@mayalogisticsinc.com">{{mbox_app}}</a>
+      <a class="btn btn-line" data-mbox-mailto href="mailto:{{email}}">{{mbox_app}}</a>
       <button class="btn btn-line" type="button" data-mbox-copy-body data-done="{{mbox_done}}" hidden>{{mbox_copy_letter}}</button>
     </div>
 
