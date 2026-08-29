@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opening the dispatch portal — Maya Logistics Inc</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<style>
+  body{display:grid;place-items:center;min-height:100dvh;background:var(--soft);text-align:center}
+  .box{padding:40px 24px;max-width:440px}
+  .box img{height:40px;width:auto;margin:0 auto 26px}
+  .spin{
+    width:34px;height:34px;margin:26px auto;border-radius:50%;
+    border:3px solid var(--line);border-top-color:var(--orange);animation:s .8s linear infinite;
+  }
+  @keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="box">
+  <img src="/assets/logo.png" width="760" height="202" alt="Maya Logistics Inc">
+  <h1 class="h2">Opening the dispatch portal…</h1>
+  <div class="spin"></div>
+  <p>Taking you to the Maya Logistics dispatch application.</p>
+  <div class="btns" style="justify-content:center">
+    <a class="btn btn-o" href="https://app.mayalogisticsinc.com/login">Continue to the portal</a>
+    <a class="btn btn-line" href="/">Back to the site</a>
+  </div>
+</div>
+<script>location.replace('https://app.mayalogisticsinc.com/login')</script>
+</body>
+</html>
