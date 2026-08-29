@@ -18,12 +18,18 @@ LANGS = [
 
 T = {}
 
-# The mailbox the site points at. Verify any address here against the domain's
-# own MX before publishing it — EHLO / MAIL FROM / RCPT TO, 250 means the box
-# exists, 550 means mail to it bounces. This one was missing for months and
-# every application sent to it was lost; it was created on 27.08.2026 and now
-# answers 250, as does dispatch@.
-EMAIL = 'info@mayalogisticsinc.com'
+# Where driver applications go. Three mailboxes, each checked against its own
+# MX with RCPT TO before being put here (250 = exists; a deliberately fake
+# address must come back 550, otherwise the server accepts everything and the
+# check proves nothing). The first is the To:, the rest ride as Cc.
+#
+# They are stored encoded — XOR 42 + base64 — and nowhere in plain text: not in
+# the pages, not in this repository, which is public. Harvester bots read HTML
+# and source with a regexp; the browser assembles the addresses at the moment
+# someone actually uses the form. Regenerate with:
+#     python _build/build.py --encode "a@b.com,c@d.com"
+MAIL_ENC = 'Q0RMRWpHS1NLRkVNQ1leQ0lZQ0RJBElFRwZOQ1laS15JQmpHS1NLRkVNQ1leQ0lZQ0RJBElFRwZHS1NLRkVNQ1leQ0lZSUVYWmpNR0tDRgRJRUc='
+
 
 # --- direct line, shown only after the application is filled in -------------
 # The number is a personal one, so it is never written out in plain text: not in

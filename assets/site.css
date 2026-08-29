@@ -477,3 +477,7 @@ section{padding:clamp(56px,7vw,100px) 0}
   margin-top:16px;padding:13px 15px;border-radius:12px;font-size:14.5px;
   background:var(--orange-soft);border:1px solid #F6DFBC;color:#6B4708;
 }
+
+/* three mailboxes, one per line */
+.mbox-addr{align-items:flex-start}
+.mbox-addr span{white-space:pre-line;font-size:15.5px;line-height:1.55}

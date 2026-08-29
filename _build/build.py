@@ -83,7 +83,7 @@ def main():
         t['hreflangs'] = hreflangs(langs)
         t['langswitch'] = switcher(langs, code, t['lang_label'])
         t['phoneblock'] = phoneblock(code)
-        t['email'] = i18n.EMAIL
+        t['mail_enc'] = i18n.MAIL_ENC
 
         page = tpl
         for key, val in t.items():
@@ -120,5 +120,13 @@ def main():
     print('sitemap.xml -> %d urls' % len(langs))
 
 
+def encode(addrs):
+    import base64
+    return base64.b64encode(bytes(b ^ 42 for b in addrs.encode())).decode()
+
+
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 2 and sys.argv[1] == '--encode':
+        print(encode(sys.argv[2]))
+    else:
+        main()

@@ -44,6 +44,21 @@
   var box = document.getElementById('mailbox');
   if (!box) return;
 
+  // The addresses never appear in the page as text — only as this blob — so
+  // harvester bots, which read HTML with a regexp, find nothing to collect.
+  // Applications go to all of them: the first as To, the others as Cc.
+  var BOXES = (function () {
+    var enc = document.body.getAttribute('data-mail-enc');
+    if (!enc) return [];
+    try {
+      var raw = atob(enc), out = '';
+      for (var i = 0; i < raw.length; i++) out += String.fromCharCode(raw.charCodeAt(i) ^ 42);
+      return out.split(',');
+    } catch (e) { return []; }
+  })();
+  var TO = BOXES[0] || '';
+  var CC = BOXES.slice(1).join(',');
+
   var q = function (sel) { return box.querySelector(sel); };
   var elTitle = q('[data-mbox-title]');
   var elSub = q('[data-mbox-sub]');
@@ -101,7 +116,7 @@
   }
 
   function openBox(opts) {
-    elAddr.textContent = opts.to;
+    elAddr.textContent = BOXES.join(String.fromCharCode(10));
     elSub.textContent = opts.subject || '';
     elSub.hidden = !opts.subject;
     if (opts.title) elTitle.textContent = opts.title;
@@ -111,12 +126,13 @@
     if (copyBody) copyBody.hidden = !opts.body;
 
     elGmail.href = 'https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=' +
-      encodeURIComponent(opts.to) +
+      encodeURIComponent(TO) + (CC ? '&cc=' + encodeURIComponent(CC) : '') +
       '&su=' + encodeURIComponent(opts.subject || '') +
       '&body=' + encodeURIComponent(opts.body || '');
 
-    elMailto.href = 'mailto:' + opts.to +
-      '?subject=' + encodeURIComponent(opts.subject || '') +
+    elMailto.href = 'mailto:' + TO +
+      '?cc=' + encodeURIComponent(CC) +
+      '&subject=' + encodeURIComponent(opts.subject || '') +
       '&body=' + encodeURIComponent(opts.body || '');
 
     if (elPhone) {
@@ -157,14 +173,16 @@
     var a = e.target.closest && e.target.closest('a[data-mail]');
     if (!a) return;
     e.preventDefault();
-    var url = new URL(a.href);
-    var p = new URLSearchParams(url.search);
     openBox({
-      to: decodeURIComponent(url.pathname),
-      subject: p.get('subject') || '',
-      body: p.get('body') || '',
+      subject: a.dataset.subject || '',
+      body: a.dataset.body || '',
       title: a.dataset.mailTitle || ''
     });
+  });
+
+  // Links that used to read "info@..." in the markup get their text here.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-mail-addr]'), function (a) {
+    a.textContent = TO;
   });
 
   /* ---------------- driver application ---------------- */
@@ -179,7 +197,6 @@
       lines.push((el.dataset.label || el.name) + ': ' + (el.value || '—'));
     });
     openBox({
-      to: form.dataset.mailForm,
       subject: form.dataset.subject || 'Driver application',
       body: lines.join('\n'),
       title: form.dataset.sentTitle || '',
