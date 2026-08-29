@@ -53,6 +53,22 @@ def switcher(langs, current, label):
     )
 
 
+def phoneblock(code):
+    """The direct line lives only here — nothing on the page shows it. Empty
+    CONTACT_PHONE means the block is left out entirely."""
+    if not i18n.CONTACT_PHONE.strip():
+        return ''
+    label, note = i18n.PHONE_TEXT[code]
+    tel = '+1' + re.sub(r'\D', '', i18n.CONTACT_PHONE)
+    return '\n'.join([
+        '    <div class="mbox-phone" data-mbox-phone hidden>',
+        '      <small>%s</small>' % label,
+        '      <a href="tel:%s">%s, %s — %s</a>' % (tel, i18n.CONTACT_NAME, i18n.CONTACT_ROLE, i18n.CONTACT_PHONE),
+        '      <span>%s</span>' % note,
+        '    </div>',
+    ])
+
+
 def main():
     tpl = open(os.path.join(HERE, 'template.html'), encoding='utf-8').read()
     langs = i18n.LANGS
@@ -66,6 +82,7 @@ def main():
         t['ver'] = VER
         t['hreflangs'] = hreflangs(langs)
         t['langswitch'] = switcher(langs, code, t['lang_label'])
+        t['phoneblock'] = phoneblock(code)
 
         page = tpl
         for key, val in t.items():

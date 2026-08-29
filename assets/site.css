@@ -455,3 +455,19 @@ section{padding:clamp(56px,7vw,100px) 0}
   color:var(--muted);font-size:20px;line-height:1;cursor:pointer;
 }
 .mbox-x button:hover{color:var(--ink);border-color:var(--ink)}
+
+/* The direct line is deliberately not on the page anywhere: it shows up in the
+   dialog only after someone has actually filled the application in. */
+.mbox-phone{
+  margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
+}
+.mbox-phone small{
+  display:block;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;
+}
+.mbox-phone a{
+  display:inline-block;margin-top:7px;font-size:21px;font-weight:800;
+  color:var(--ink);letter-spacing:-.01em;
+}
+.mbox-phone a:hover{color:var(--teal)}
+.mbox-phone span{display:block;margin-top:6px;font-size:14px;color:var(--body)}

@@ -54,6 +54,7 @@
   var elNote = q('[data-mbox-note]');
   var copyAddr = q('[data-mbox-copy-addr]');
   var copyBody = q('[data-mbox-copy-body]');
+  var elPhone = q('[data-mbox-phone]');
 
   function fallbackCopy(text, done) {
     var ta = document.createElement('textarea');
@@ -100,6 +101,8 @@
       '?subject=' + encodeURIComponent(opts.subject || '') +
       '&body=' + encodeURIComponent(opts.body || '');
 
+    if (elPhone) elPhone.hidden = !opts.phone;
+
     elNote.hidden = true;
     if (box.showModal) box.showModal(); else box.setAttribute('open', '');
   }
@@ -138,7 +141,8 @@
       to: form.dataset.mailForm,
       subject: form.dataset.subject || 'Driver application',
       body: lines.join('\n'),
-      title: form.dataset.sentTitle || ''
+      title: form.dataset.sentTitle || '',
+      phone: true          // the direct line is earned by filling the form in
     });
   });
 })();

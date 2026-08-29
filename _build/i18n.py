@@ -18,6 +18,22 @@ LANGS = [
 
 T = {}
 
+# --- direct line, shown only after the application is filled in -------------
+# Leave CONTACT_PHONE empty and the block is not rendered at all.
+CONTACT_NAME = 'Nick'
+CONTACT_ROLE = 'Owner'
+CONTACT_PHONE = ''      # e.g. '(954) 123-4567'
+
+PHONE_TEXT = {
+    'en': ('Prefer to call?', 'Call about your application any time.'),
+    'es': ('¿Prefiere llamar?', 'Llame por su solicitud cuando quiera.'),
+    'ru': ('Хотите позвонить?', 'По анкете можно звонить в любое время.'),
+    'uk': ('Хочете зателефонувати?', 'Щодо анкети телефонуйте будь-коли.'),
+    'ro': ('Preferați să sunați?', 'Sunați oricând în legătură cu formularul.'),
+    'kk': ('Қоңырау шалғыңыз келе ме?', 'Сауалнама бойынша кез келген уақытта қоңырау шалыңыз.'),
+}
+
+
 # ============================== ENGLISH ==============================
 T['en'] = dict(
     title="Maya Logistics Inc | CDL-A Jobs | Hiring Truck Drivers — 48 States",
