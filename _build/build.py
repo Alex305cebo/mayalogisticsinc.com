@@ -54,16 +54,16 @@ def switcher(langs, current, label):
 
 
 def phoneblock(code):
-    """The direct line lives only here — nothing on the page shows it. Empty
-    CONTACT_PHONE means the block is left out entirely."""
-    if not i18n.CONTACT_PHONE.strip():
+    """Nothing here carries the number in readable form — only the encoded blob
+    and the translated wording around it. JavaScript fills the link in when the
+    application is actually submitted."""
+    if not i18n.CONTACT_ENC.strip():
         return ''
     label, note = i18n.PHONE_TEXT[code]
-    tel = '+1' + re.sub(r'\D', '', i18n.CONTACT_PHONE)
     return '\n'.join([
-        '    <div class="mbox-phone" data-mbox-phone hidden>',
+        '    <div class="mbox-phone" data-mbox-phone data-p="%s" hidden>' % i18n.CONTACT_ENC,
         '      <small>%s</small>' % label,
-        '      <a href="tel:%s">%s, %s — %s</a>' % (tel, i18n.CONTACT_NAME, i18n.CONTACT_ROLE, i18n.CONTACT_PHONE),
+        '      <a href="#" data-mbox-tel></a>',
         '      <span>%s</span>' % note,
         '    </div>',
     ])

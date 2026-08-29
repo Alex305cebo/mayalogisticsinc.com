@@ -19,10 +19,13 @@ LANGS = [
 T = {}
 
 # --- direct line, shown only after the application is filled in -------------
-# Leave CONTACT_PHONE empty and the block is not rendered at all.
-CONTACT_NAME = 'Nick'
-CONTACT_ROLE = 'Owner'
-CONTACT_PHONE = ''      # e.g. '(954) 123-4567'
+# The number is a personal one, so it is never written out in plain text: not in
+# the HTML, not here in the repository (this repo is public). What is stored is
+# the pair "name|digits" XOR-ed with 42 and base64-encoded; the page decodes it
+# in JavaScript at the moment the driver submits the form. Harvester bots read
+# HTML with a regexp and do not run scripts or submit forms, so there is nothing
+# for them to pick up. Empty CONTACT_ENC = no block at all.
+CONTACT_ENC = 'ZENJQQpuBAYKZV1ET1hWExsdHR4TGx8SEg=='
 
 PHONE_TEXT = {
     'en': ('Prefer to call?', 'Call about your application any time.'),

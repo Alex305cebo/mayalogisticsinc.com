@@ -82,6 +82,23 @@
     }
   }
 
+  // The direct line is a personal number. It is never present in the page as
+  // text — only as an encoded blob — and it is assembled here, in the browser,
+  // at the moment a driver actually submits the application. Harvesters read
+  // HTML with a regexp; they do not run scripts and do not fill in forms.
+  function revealPhone(el) {
+    var enc = el.getAttribute('data-p');
+    var link = el.querySelector('[data-mbox-tel]');
+    if (!enc || !link || link.dataset.ready) return;
+    var raw = atob(enc), out = '';
+    for (var i = 0; i < raw.length; i++) out += String.fromCharCode(raw.charCodeAt(i) ^ 42);
+    var parts = out.split('|');
+    var d = parts[1] || '';
+    link.href = 'tel:+1' + d;
+    link.textContent = parts[0] + ' — (' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+    link.dataset.ready = '1';
+  }
+
   function openBox(opts) {
     elAddr.textContent = opts.to;
     elSub.textContent = opts.subject || '';
@@ -101,7 +118,10 @@
       '?subject=' + encodeURIComponent(opts.subject || '') +
       '&body=' + encodeURIComponent(opts.body || '');
 
-    if (elPhone) elPhone.hidden = !opts.phone;
+    if (elPhone) {
+      elPhone.hidden = !opts.phone;
+      if (opts.phone) revealPhone(elPhone);
+    }
 
     elNote.hidden = true;
     if (box.showModal) box.showModal(); else box.setAttribute('open', '');
