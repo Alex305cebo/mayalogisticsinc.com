@@ -471,3 +471,9 @@ section{padding:clamp(56px,7vw,100px) 0}
 }
 .mbox-phone a:hover{color:var(--teal)}
 .mbox-phone span{display:block;margin-top:6px;font-size:14px;color:var(--body)}
+
+/* Shown when a mailto: click leads nowhere — no mail client is registered. */
+.mbox-warn{
+  margin-top:16px;padding:13px 15px;border-radius:12px;font-size:14.5px;
+  background:var(--orange-soft);border:1px solid #F6DFBC;color:#6B4708;
+}

@@ -185,7 +185,8 @@ T['en'] = dict(
 
     mbox_title="Write to us", mbox_close="Close", mbox_copy="Copy", mbox_done="Copied",
     mbox_gmail="Open in Gmail", mbox_app="Mail app", mbox_copy_letter="Copy the message",
-    mbox_letter="Message", mbox_note="Copied to the clipboard.",
+    mbox_letter="Message", mbox_no_app="No mail app opened. The message is already copied — paste it into your email, or use “Open in Gmail”.",
+    mbox_note="Copied to the clipboard.",
 )
 
 # ============================== РУССКИЙ ==============================
@@ -329,7 +330,8 @@ T['ru'] = dict(
 
     mbox_title="Написать нам", mbox_close="Закрыть", mbox_copy="Скопировать", mbox_done="Готово",
     mbox_gmail="Открыть в Gmail", mbox_app="Почтовая программа", mbox_copy_letter="Скопировать письмо",
-    mbox_letter="Текст письма", mbox_note="Скопировано в буфер обмена.",
+    mbox_letter="Текст письма", mbox_no_app="Почтовая программа не открылась. Письмо уже скопировано — вставьте его в свою почту или нажмите «Открыть в Gmail».",
+    mbox_note="Скопировано в буфер обмена.",
 )
 
 # ============================== ESPAÑOL ==============================
@@ -473,5 +475,6 @@ T['es'] = dict(
 
     mbox_title="Escríbenos", mbox_close="Cerrar", mbox_copy="Copiar", mbox_done="Copiado",
     mbox_gmail="Abrir en Gmail", mbox_app="Programa de correo", mbox_copy_letter="Copiar el mensaje",
-    mbox_letter="Texto del mensaje", mbox_note="Copiado al portapapeles.",
+    mbox_letter="Texto del mensaje", mbox_no_app="No se abrió ningún programa de correo. El mensaje ya está copiado: péguelo en su correo o use «Abrir en Gmail».",
+    mbox_note="Copiado al portapapeles.",
 )

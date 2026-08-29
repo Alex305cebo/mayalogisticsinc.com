@@ -55,6 +55,7 @@
   var copyAddr = q('[data-mbox-copy-addr]');
   var copyBody = q('[data-mbox-copy-body]');
   var elPhone = q('[data-mbox-phone]');
+  var elFallback = q('[data-mbox-fallback]');
 
   function fallbackCopy(text, done) {
     var ta = document.createElement('textarea');
@@ -124,11 +125,31 @@
     }
 
     elNote.hidden = true;
+    if (elFallback) elFallback.hidden = true;
     if (box.showModal) box.showModal(); else box.setAttribute('open', '');
   }
 
   if (copyAddr) copyAddr.addEventListener('click', function () { copy(elAddr.textContent, copyAddr); });
   if (copyBody) copyBody.addEventListener('click', function () { copy(elBody.value, copyBody); });
+
+  // A mailto: with no mail client registered opens nothing and reports nothing —
+  // the click just dies. So: copy the message first (inside the click, while the
+  // browser still allows it), let the mailto try, and if the page never lost
+  // focus a second later, say plainly that nothing opened.
+  if (elMailto) {
+    elMailto.addEventListener('click', function () {
+      copy(elBody.value || elAddr.textContent);
+      var left = false;
+      var mark = function () { left = true; };
+      addEventListener('blur', mark);
+      addEventListener('visibilitychange', mark);
+      setTimeout(function () {
+        removeEventListener('blur', mark);
+        removeEventListener('visibilitychange', mark);
+        if (!left && elFallback) elFallback.hidden = false;
+      }, 1200);
+    });
+  }
 
   // Any mailto link marked data-mail opens the dialog instead of dying quietly.
   // Without JS the link still behaves as an ordinary mailto, so nothing is lost.

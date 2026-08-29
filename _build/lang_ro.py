@@ -139,5 +139,6 @@ D = dict(
 
     mbox_title="Scrieți-ne", mbox_close="Închide", mbox_copy="Copiază", mbox_done="Copiat",
     mbox_gmail="Deschide în Gmail", mbox_app="Program de e-mail", mbox_copy_letter="Copiază mesajul",
-    mbox_letter="Textul mesajului", mbox_note="Copiat în clipboard.",
+    mbox_letter="Textul mesajului", mbox_no_app="Nu s-a deschis niciun program de e-mail. Mesajul este deja copiat — lipiți-l în e-mailul dumneavoastră sau folosiți „Deschide în Gmail”.",
+    mbox_note="Copiat în clipboard.",
 )
