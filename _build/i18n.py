@@ -18,10 +18,11 @@ LANGS = [
 
 T = {}
 
-# The mailbox the site actually points at. info@mayalogisticsinc.com does NOT
-# exist — Hostinger's MX answers 550 "undeliverable address" — so everything
-# sent there bounced. Change this line back the moment that mailbox is created.
-EMAIL = 'mayalogisticscorp@gmail.com'
+# The mailbox the site points at. Checked against the domain's own MX with
+# RCPT TO: dispatch@ answers 250 (accepted), info@ answers 550 "undeliverable
+# address" — that box was never created, which is why everything sent to it
+# bounced. Verify the same way before changing this line.
+EMAIL = 'dispatch@mayalogisticsinc.com'
 
 # --- direct line, shown only after the application is filled in -------------
 # The number is a personal one, so it is never written out in plain text: not in
