@@ -18,11 +18,12 @@ LANGS = [
 
 T = {}
 
-# The mailbox the site points at. Checked against the domain's own MX with
-# RCPT TO: dispatch@ answers 250 (accepted), info@ answers 550 "undeliverable
-# address" — that box was never created, which is why everything sent to it
-# bounced. Verify the same way before changing this line.
-EMAIL = 'dispatch@mayalogisticsinc.com'
+# The mailbox the site points at. Verify any address here against the domain's
+# own MX before publishing it — EHLO / MAIL FROM / RCPT TO, 250 means the box
+# exists, 550 means mail to it bounces. This one was missing for months and
+# every application sent to it was lost; it was created on 27.08.2026 and now
+# answers 250, as does dispatch@.
+EMAIL = 'info@mayalogisticsinc.com'
 
 # --- direct line, shown only after the application is filled in -------------
 # The number is a personal one, so it is never written out in plain text: not in
